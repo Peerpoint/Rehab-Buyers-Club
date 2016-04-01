@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  lead_type: MyString
+  property_type: 
+  location: MyString
+  avr: 9.99
+  asking_price: 9.99
+  repair_cost: 9.99
+  profit: 9.99
+
+two:
+  status: MyString
+  lead_type: MyString
+  property_type: 
+  location: MyString
+  avr: 9.99
+  asking_price: 9.99
+  repair_cost: 9.99
+  profit: 9.99

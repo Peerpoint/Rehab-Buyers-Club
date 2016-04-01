@@ -1,0 +1,101 @@
+<p id="notice"><%= notice %></p>
+
+<!--Banner Section-->
+  	
+  	<div class="banner container">
+ 	
+  	<div class="row">
+  	  <div class="col-md-4 col-md-offset-1">
+  	    <h3>Chicago Investment<br>Properties Under $100K</h3>
+  	    <p class="subhero">Enter your information HERE to gain access to<br>HANDYMAN deals in the Chicago Area.</p>
+  	    <p>Also get emails when we get new cheap properties in our inventory</p>
+  	    <p class="subhero">Just Complete This<br>Quick Form!</p>
+  	  </div>
+  	  
+  	<div class="col-md-5 col-md-offset-2">
+  	<div class="sidebar">
+  		<form>
+  			<h4>See Our Local Fixer Upper Properties - FREE</h4><br>
+  			<p>Non MLS Investment Properties, Many are under $100K!</p>
+  				<div class="form-group">
+    				<label for="exampleInputEmail1">Enter Your First & Last Name</label>
+    				<form class="form-inline">
+              <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail3">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputPassword3">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Last Name">
+          </div>
+  				</div>
+  				
+  				<div class="form-group">
+    				<label for="exampleInputEmail1">What Kind of Buyer Are You?</label>
+    				<select class="form-control">
+  						<option>Less than $100,000</option>
+  						<option>$100,000-$250,000</option>
+  						<option>$250,000-$500,000</option>
+  						<option>$500,000-$1,000,000</option>
+  						<option>$1,000,000+</option>
+					</select>
+  				</div>
+  <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail3">Email</label>
+              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+          </div>
+  		</form> 
+  		</div><!--close col-->
+  		</div><!--close row-->
+  		</div>
+  	</div><!--close banner-->
+
+<h1>Listing Listings</h1>
+<div class="container">
+  <div class="row">
+     <% @listings.each do |listing| %>
+     <div class="col-md-12">
+    <div class="col-md-1">
+      <div class="thumbnail">
+      <%= image_tag listing.image.url(:thumbnail) %>
+      </div>
+    </div>
+    <div class="col-md-3 list1">
+      <p>Status:</p>
+      <p>Lead Type:</p>
+      <p>Property Type:</p>
+      <p>Location:</p>
+    </div>
+    <div class="col-md-2">
+      <%= listing.status %><br>
+      <%= listing.lead_type %><br>
+      <%= listing.property_type %><br>
+      <%= listing.location %>
+    </div>
+    <div class="col-md-3 list1">
+      <p>Estimated After Repair Value:</p>
+      <p>Seller's Asking Price:</p>
+      <p>Estimated Cost of Repairs:</p>
+      <p>Profit Potential of:</p>
+    </div>
+    <div class="col-md-2">
+      <%= number_to_currency(listing.avr) %><br>
+      <%= number_to_currency(listing.asking_price) %><br>
+      <%= number_to_currency(listing.repair_cost) %><br>
+      <%= number_to_currency(listing.profit) %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to 'See Full Details', listing, class:"btn btn-success btn-xs" %><br>
+      <%= link_to 'Edit', edit_listing_path(listing), class:"btn btn-link" %><br>
+      <%= link_to 'Delete Listing', listing, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-link" %>
+    </div>
+    
+    </div>
+   <% end %> 
+    
+  </div>  
+  </div>
+  
+<br>
+
+<%= link_to 'Add a New Property', new_listing_path, class:"btn btn-link" %>

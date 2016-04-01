@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @listing.image.url(:medium) %>
+
+<p>
+  <strong>Status:</strong>
+  <%= @listing.status %>
+</p>
+
+<p>
+  <strong>Lead type:</strong>
+  <%= @listing.lead_type %>
+</p>
+
+<p>
+  <strong>Property type:</strong>
+  <%= @listing.property_type %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @listing.location %>
+</p>
+
+<p>
+  <strong>Avr:</strong>
+  <%= number_to_currency(@listing.avr) %>
+</p>
+
+<p>
+  <strong>Asking price:</strong>
+  <%= number_to_currency(@listing.asking_price) %>
+</p>
+
+<p>
+  <strong>Repair cost:</strong>
+  <%= number_to_currency(@listing.repair_cost) %>
+</p>
+
+<p>
+  <strong>Profit:</strong>
+  <%= number_to_currency(@listing.profit) %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing), class:"btn btn-link" %> |
+<%= link_to 'Back', listings_path, class:"btn btn-link" %>
