@@ -1,5 +1,10 @@
 class Listing < ActiveRecord::Base
-    has_attached_file :image, styles: { medium: "100x100>", thumb: "50x50#" }, default_url: "default.jpg",
+    if Rails.enc.development?
+        has_attached_file :image, styles: { medium: "100x100>", thumb: "50x50#" }, default_url: "default.jpg"
+    else    
+        has_attached_file :image, styles: { medium: "100x100>", thumb: "50x50#" }, default_url: "default.jpg",
             :storage => :dropbox,
-            :dropbox_credentials => Rails.root.join("config/dropbox.yml")
+            :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+            :path => ":style/:id_:filename"
+    end
 end
