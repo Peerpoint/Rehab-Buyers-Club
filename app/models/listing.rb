@@ -10,5 +10,7 @@ class Listing < ActiveRecord::Base
     
     validates :status, :property_type, :asking_price, presence: true
     validates :asking_price, numericality: { greater_than: 0}
-    validates_attachment_presence :image
+    #validates_attachment_presence :image
+    
+    belongs_to :user
 end

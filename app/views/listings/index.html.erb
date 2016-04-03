@@ -85,6 +85,7 @@
       <%= number_to_currency(listing.profit) %>
     </div>
     <div class="col-md-1">
+      <p><%= "Property Listed by #{listing.user.name}" %></p>
       <%= link_to 'See Full Details', listing, class:"btn btn-success btn-xs" %><br>
       <%= link_to 'Edit', edit_listing_path(listing), class:"btn btn-link" %><br>
       <%= link_to 'Delete Listing', listing, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-link" %>
