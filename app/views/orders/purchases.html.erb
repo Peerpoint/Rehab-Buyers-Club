@@ -1,0 +1,39 @@
+<h1>Listings Purchased</h1>
+<div class="container">
+  <div class="row">
+     <% @orders.each do |order| %>
+     <div class="col-md-12">
+    <div class="col-md-1">
+      <div class="thumbnail">
+      <%= image_tag order.listing.image.url(:thumb) %>
+      </div>
+    </div>
+    <div class="col-md-3 list1">
+      <p>Status:</p>
+      <p>Lead Type:</p>
+      <p>Property Type:</p>
+      <p>Location:</p>
+    </div>
+    <div class="col-md-2">
+      <%= order.listing.status %><br>
+      <%= order.listing.lead_type %><br>
+      <%= order.listing.property_type %><br>
+      <%= order.listing.location %>
+      <%= order.seller.name %>
+      <%= order.created_at.strftime("%B %-d, %Y") %>
+    </div>
+    <div class="col-md-3 list1">
+      <p>Estimated After Repair Value:</p>
+      <p>Seller's Asking Price:</p>
+      <p>Estimated Cost of Repairs:</p>
+      <p>Profit Potential of:</p>
+    </div>
+    <div class="col-md-2">
+      <%= number_to_currency(listing.avr) %><br>
+      <%= number_to_currency(listing.asking_price) %><br>
+      <%= number_to_currency(listing.repair_cost) %><br>
+      <%= number_to_currency(listing.profit) %>
+    </div>
+    </div>
+  </div>  
+  </div>
