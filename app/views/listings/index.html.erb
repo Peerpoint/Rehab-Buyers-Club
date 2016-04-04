@@ -57,7 +57,7 @@
      <div class="col-md-12">
     <div class="col-md-1">
       <div class="thumbnail">
-      <%= image_tag listing.image.url(:thumbnail) %>
+      <%= link_to image_tag(listing.image.url), listing %>
       </div>
     </div>
     <div class="col-md-3 list1">
@@ -87,8 +87,10 @@
     <div class="col-md-1">
       <p><%= "Property Listed by #{listing.user.name}" %></p>
       <%= link_to 'See Full Details', listing, class:"btn btn-success btn-xs" %><br>
-      <%= link_to 'Edit', edit_listing_path(listing), class:"btn btn-link" %><br>
-      <%= link_to 'Delete Listing', listing, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-link" %>
+      <% if (user_signed_in?) && (current_user == listing.user) %>
+        <%= link_to 'Edit', edit_listing_path(listing), class:"btn btn-link" %><br>
+        <%= link_to 'Delete Listing', listing, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-link" %>
+      <% end %>
     </div>
     
     </div>
@@ -98,5 +100,6 @@
   </div>
   
 <br>
-
-<%= link_to 'Add a New Property', new_listing_path, class:"btn btn-link" %>
+<% if user_signed_in? %>
+  <%= link_to 'Add a New Property', new_listing_path, class:"btn btn-link" %>
+<% end %>
